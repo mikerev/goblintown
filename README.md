@@ -1,1 +1,1 @@
-# This is the web framework for Goblintown.
+This is the web framework for Goblintown.
