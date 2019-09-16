@@ -1,0 +1,14 @@
+--- 
+- name: install pip3
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - python3-pip
+    - python3-dev
+    - nginx
+
+- name: install flask stuff
+  pip:
+    requirements: /opt/goblintown/requirements.txt
+    executable: /usr/bin/pip3

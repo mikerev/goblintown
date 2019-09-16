@@ -1,0 +1,7 @@
+#!/bin/bash
+
+PID=`docker ps -a | sed -n 2p | cut -c1-13` 
+
+docker stop $PID
+docker start $PID
+docker logs -f $PID

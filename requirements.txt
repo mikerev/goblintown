@@ -1,0 +1,7 @@
+flask 
+gunicorn
+peewee 
+pygments 
+markdown 
+micawber 
+BeautifulSoup4

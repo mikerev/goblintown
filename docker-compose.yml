@@ -12,12 +12,19 @@ services:
       restart_policy:
         condition: on-failure
     ports:
-      - "8000:80"
+      - "8000:8000"
     networks:
-      - webnet
-    command: tail -f /dev/null
-
+      - default
+    volumes:
+      - ./:/opt/goblintown:ro
+    command: >
+      bash -lc "apt-get update 
+      && apt-get install --reinstall dbus -y  
+      && apt-get install software-properties-common -y   
+      && apt-add-repository ppa:ansible/ansible 
+      && apt-get update && apt-get install ansible -y 
+      && ansible-playbook /opt/goblintown/ansible/goblintown.yml 
+      && cd /opt/goblintown/app 
+      && python3 app.py"
 networks:
-  webnet:
-    external:
-      name: goblintown_webnet
+  default:
